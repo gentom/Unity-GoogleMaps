@@ -21,16 +21,10 @@ public class GoogleMap : Singleton<GoogleMap>
     public GoogleMapMarker[] markers;
     public GoogleMapPath[] paths;
     float tempZoom = 0;
-    public bool GetMyLocation;
-    private Position myPos;
     void Start()
     {
-        myPos = new Position();
         tempZoom = zoom;
         if (loadOnStart) Refresh();
-        if (GetMyLocation) {
-            StartCoroutine(myPos.StartingLoc());
-        }
     }
     void Update() {
         if (tempZoom != zoom) {
@@ -54,11 +48,6 @@ public class GoogleMap : Singleton<GoogleMap>
         
     }
     public float speed;
-    public void SetPos(float lat,float longt) {
-        centerLocation.latitude = lat;
-        centerLocation.longitude = longt;
-        Refresh();
-    }
     public void Move(Vector2 v) {
          
         centerLocation.latitude -= (v.y/speed);

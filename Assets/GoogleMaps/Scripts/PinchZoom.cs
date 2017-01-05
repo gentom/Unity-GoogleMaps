@@ -10,55 +10,49 @@ public class PinchZoom : MonoBehaviour
     
     void Update()
     {
-       
-        
-        // If there are two touches on the device...
-        // Store both touches.
-       
-
-    }
-    void Moving() {
         if (Input.GetMouseButton(0))
         {
 
             firstTouch++;
             if (firstTouch == 0)
             {
-
+                
                 cekPosMouse = Input.mousePosition;
             }
             Vector2 distance = Input.mousePosition - cekPosMouse;
-            if (realtimeCheck == distance)
-            {
+            if (realtimeCheck == distance) {
                 Debug.Log("asd");
                 return;
             }
-            if (distance.y > 20)
+                if (distance.y > 20)
             {
                 GoogleMap.Instance.Move(distance);
-
+ 
             }
-            if (distance.y < -20)
-            {
+            if (distance.y < -20) {
                 GoogleMap.Instance.Move(distance);
-
+             
             }
             if (distance.x > 20)
             {
                 GoogleMap.Instance.Move(distance);
-
+                
             }
             if (distance.x < -20)
             {
                 GoogleMap.Instance.Move(distance);
-
+               
             }
             realtimeCheck = distance;
         }
-        else
-        {
+        else {
             firstTouch = 0;
         }
+        
+        // If there are two touches on the device...
+        // Store both touches.
+       
+
     }
     void touchGeser() {
         if (Input.touchCount == 1)
